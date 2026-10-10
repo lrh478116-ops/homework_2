@@ -76,7 +76,7 @@ items = [
 for title, body, url in items:
     y = text(f'<b>{title}</b><br/>{body} <link href="{url}" color="#426132">阅读来源</link>', y, 10, 16)
 y = heading('本地运行与后续发布', y)
-y = text('在源码目录执行 node scripts/serve.mjs，浏览器访问 http://127.0.0.1:4173。已提供 GitHub Pages 工作流，后续将源码上传到 lrh478116-ops/homework_2，设置 Pages 来源为 GitHub Actions 即可发布。当前交付为本地版本，尚未推送或生成公网网址。', y, 10, 16)
+y = text('网站已上传至 lrh478116-ops/homework_2，并使用 GitHub Pages 发布。<link href="https://lrh478116-ops.github.io/homework_2/" color="#426132">打开网站 https://lrh478116-ops.github.io/homework_2/</link><br/>本地复现：在源码目录执行 node scripts/serve.mjs，浏览器访问 http://127.0.0.1:4173。源码保留发布工作流与测试，可继续修改并重新部署。', y, 10, 16)
 y = heading('提交材料', y)
 y = text('配套包含网站源代码压缩包、本说明 PDF 和带中文合成语音讲解的实际网页演示视频。视频展示年份切换、产业流程与正常及负向模拟。公开数据和当前模拟可以分别从网页导出 CSV；所有公式和统计边界均可查看。', y, 10, 16)
 if y < 55:

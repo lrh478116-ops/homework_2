@@ -9,10 +9,10 @@
 | 多种有意义的可视化与丰富交互 | Canvas 网络、SVG 趋势与能源图、投资对比、价值节点、产业流程、工作流模拟 | 年份/节点/行业/滑块驱动正式渲染的 browser checks | VERIFIED |
 | 整体布局与美观 | 统一配色与导航；桌面双列、手机单列；移动节点独立排布 | 320 / 390 / 768 / 1024 / 1440 px 的宽度和节点重叠检查，人工查看截图 | VERIFIED |
 | 真实生产力实验而非仅记录参数 | app.js input → simulate → stages/total/gain → DOM + CSV | 参数反事实、负收益、无 AI、零质量、重置、导出与当前结果一致 | FORMAL_PATH_INTEGRATION VERIFIED |
-| 源代码压缩文件 | dist + tests + scripts + docs + GitHub Actions workflow | 打包时对照 browser source manifest 校验哈希，ZIP 内容核验 | 交付打包检查后 VERIFIED |
-| 不超过五分钟、有讲解的视频 | 实际 Chrome 网页录制，8 段中文合成语音，章节字幕 | media-verification.json：时长、H264、AAC、音频解码非静音；抽帧检查 | 媒体验证后 VERIFIED |
+| 源代码压缩文件 | dist + tests + scripts + docs + GitHub Actions workflow | package-delivery.py 对照 browser / recording / production source manifest 校验哈希，ZIP 内容核验 | 打包程序成功时 VERIFIED |
+| 不超过五分钟、有讲解的视频 | 实际 Chrome 网页录制，8 段中文合成语音，可见字幕 | media-verification.json：247.74 秒、H264、AAC、音频解码非静音；重新录制后抽帧检查统计与字幕同时可见 | VERIFIED |
 | 网站关键亮点文档 | 三页 PDF，主题、交互、模型、数据与提交方式 | 3 页实际渲染逐页查看，无重叠裁切；可提取文字 | VERIFIED |
-| 发布网页链接 | 兼容 GitHub Pages 子路径的源码及 Actions workflow | 必须核对实际 pushed commit、GitHub Actions result 与 Pages 状态 | 部署成功之前 NOT CLOSED |
+| 发布网页链接 | GitHub Pages 正式网址 /homework_2/ | 实际 workflow success；公网 16 项交互检查；verify-deployment 逐资源 SHA-256 与 pushed commit 核对 | 部署与哈希核对程序成功时 VERIFIED |
 
 ## 证据分类与因果边界
 - model.test.mjs 是 COMPONENT_CAPABILITY；不能单独证明网页接入。
@@ -30,4 +30,4 @@
 - 当前验收依据是新鲜浏览器报告与源文件 SHA-256，不使用视频作为代码版本验收替代。视频在最终网页版本上重新录制，录制 manifest 保留源文件哈希，避免把旧录制冒充当前版本。
 - GitHub workflow 依据 GitHub 官方文档准备，上传后以实际 workflow run 与 Pages 响应为验收证据；不能仅以工作流文件存在判定部署完成。
 
-本地网站实现已通过正式入口验证；完整线上作业提交保持 NOT CLOSED，直到上传、GitHub Pages 发布与本地提交材料打包获得运行证据。最终状态见 DEPLOYMENT.json 与 DELIVERY_VERIFICATION.json。
+本地与公网正式入口均已通过验证。最终验收由成功的部署、浏览器报告、媒体报告和实际 ZIP 校验共同支撑，最终状态见本地交付文件目录的“交付校验.json”。任一正式检查失败时不允许打包程序返回 CLOSED。

@@ -4,6 +4,8 @@ import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 
 import assert from 'node:assert/strict';
 import { simulate, defaults } from '../dist/model.js';
 const require = createRequire(import.meta.url);
+const baseURL = process.env.TEST_BASE_URL || 'http://127.0.0.1:4173';
+const reportFile = process.env.TEST_REPORT_FILE || 'docs/browser-verification.json';
 let chromium;
 try { ({ chromium } = require('playwright')); }
 catch { ({ chromium } = require('C:/Users/22808/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright')); }
@@ -12,10 +14,10 @@ const browser = await chromium.launch({ headless: true, ...(systemBrowser ? { ex
 const page = await browser.newPage({ viewport: { width: 1440, height: 1000 }, reducedMotion: 'reduce' });
 const errors = [];
 page.on('pageerror', e => errors.push(e.message));
-page.on('response', r => { if (r.url().startsWith('http://127.0.0.1:4173') && r.status() >= 400) errors.push(`${r.status()} ${r.url()}`); });
+page.on('response', r => { if (r.url().startsWith(baseURL) && r.status() >= 400) errors.push(`${r.status()} ${r.url()}`); });
 const checks = [];
 function check(name) { checks.push(name); }
-await page.goto('http://127.0.0.1:4173', { waitUntil: 'networkidle' });
+await page.goto(baseURL, { waitUntil: 'networkidle' });
 await page.locator('#throughput').waitFor();
 assert.equal(await page.locator('#throughput').textContent(), `+${simulate(defaults).gain.toFixed(1)}%`); check('正式入口消费模型，默认 DOM 与模型结果一致');
 mkdirSync('docs/screenshots', { recursive: true });
@@ -85,11 +87,11 @@ for (const width of [1440, 1024, 768, 390, 320]) {
   });
   assert.deepEqual(collisions, [], `价值引擎节点遮挡 at ${width}`);
 }
-await page.setViewportSize({ width: 390, height: 844 }); await page.goto('http://127.0.0.1:4173', { waitUntil: 'networkidle' });
+await page.setViewportSize({ width: 390, height: 844 }); await page.goto(baseURL, { waitUntil: 'networkidle' });
 await page.locator('.menu-toggle').click(); assert.equal(await page.locator('.menu-toggle').getAttribute('aria-expanded'), 'true'); await page.locator('.topbar nav a[href="#lab"]').click(); assert.equal(await page.locator('.menu-toggle').getAttribute('aria-expanded'), 'false');
 await page.evaluate(() => scrollTo(0, 0)); await page.screenshot({ path: 'docs/screenshots/02-mobile.png', fullPage: true }); check('320–1440像素无整页横向溢出或引擎节点遮挡，移动导航可用');
 assert.deepEqual(errors, []); check('浏览器无JS运行错误，无本地资源加载失败');
 const sourceManifest = Object.fromEntries(readdirSync('dist').map(file => [`dist/${file}`, createHash('sha256').update(readFileSync(`dist/${file}`)).digest('hex')]));
-writeFileSync('docs/browser-verification.json', JSON.stringify({ runId: randomUUID(), time: new Date().toISOString(), configuration: { browser: 'Chromium', reducedMotion: 'reduce', viewportWidths: [1440, 1024, 768, 390, 320], url: 'http://127.0.0.1:4173' }, sourceManifest, checks, errors, result: 'passed' }, null, 2));
+writeFileSync(reportFile, JSON.stringify({ runId: randomUUID(), time: new Date().toISOString(), configuration: { browser: 'Chromium', reducedMotion: 'reduce', viewportWidths: [1440, 1024, 768, 390, 320], url: baseURL }, sourceManifest, checks, errors, result: 'passed' }, null, 2));
 console.log(`PASS: ${checks.length} browser checks`, checks);
 await browser.close();

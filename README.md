@@ -40,7 +40,9 @@ node tests/browser.mjs
 
 ## 上传到 homework_2 / GitHub Pages
 
-已核实目标仓库： https://github.com/lrh478116-ops/homework_2 。遵照“先写在本地，之后上传 GitHub”，先完成本地实现和验证，再上传并运行 GitHub Pages 发布；实际发布状态以 docs/DEPLOYMENT.json 为准。
+仓库： https://github.com/lrh478116-ops/homework_2 。遵照“先写在本地，之后上传 GitHub”，完成本地实现和验证后已上传并通过 GitHub Pages 发布。
+
+网站：https://lrh478116-ops.github.io/homework_2/ 。发布的资源逐项与本地 SHA-256 核对，公网正式入口的交互验证保存在 `docs/browser-verification-production.json`；完整提交文件与 commit 校验在本地“交付文件”目录。
 
 将本目录内容放到仓库根目录，保留 `dist`、`tests`、`scripts`、`package.json` 与 `.github/workflows/pages.yml`。
 

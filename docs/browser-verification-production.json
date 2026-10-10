@@ -1,0 +1,44 @@
+{
+  "runId": "2384e1f7-0df0-4779-af0f-e2debedb6458",
+  "time": "2026-10-10T08:36:04.887Z",
+  "configuration": {
+    "browser": "Chromium",
+    "reducedMotion": "reduce",
+    "viewportWidths": [
+      1440,
+      1024,
+      768,
+      390,
+      320
+    ],
+    "url": "https://lrh478116-ops.github.io/homework_2/"
+  },
+  "sourceManifest": {
+    "dist/app.js": "63ee75586c8771733e1d496eb223c59c807ca80759b83ea2e6895f87c7a7206b",
+    "dist/data.js": "fec89db9a706b57a1212a901ef251993513ae6d53c476b7dd55c49c4ed9d29f8",
+    "dist/favicon.svg": "3bea29e33eb7510044f6ecec814b192acb4076f5a27099f15891fdd469527052",
+    "dist/index.html": "90122265c94ede975454123352776bcb0df58467f6970d3d408f08dc5fa97c95",
+    "dist/model.js": "62cdc834ca89c5ea13bf5dd46c14cf092b22249c2351b19b943b09deeeffa5dc",
+    "dist/styles.css": "fc9e9f5547564cc4fc230952e4ed4cdadfb8b1768c16b867ab3072ab25708958"
+  },
+  "checks": [
+    "正式入口消费模型，默认 DOM 与模型结果一致",
+    "年份选择改变 SVG 选择状态与可见解读",
+    "四个价值要素可操作",
+    "全部六个行业更新正式场景与五节点流程",
+    "产业标签键盘导航",
+    "三个真实滑块输入驱动正式模型、阶段条与最终吞吐量",
+    "负向控制：复核过重产生负收益",
+    "负向控制：关闭AI不会复用旧收益",
+    "负向控制：零数据质量无虚构节时",
+    "重置恢复默认，无 stale state",
+    "当前模拟CSV真实下载且结果对应当前30%覆盖率",
+    "来源面板定位与Escape退出",
+    "六项来源与公开数据CSV下载，保留预测标签和原始URL",
+    "六步导览实际导航与结束",
+    "320–1440像素无整页横向溢出或引擎节点遮挡，移动导航可用",
+    "浏览器无JS运行错误，无本地资源加载失败"
+  ],
+  "errors": [],
+  "result": "passed"
+}
