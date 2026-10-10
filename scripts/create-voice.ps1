@@ -15,4 +15,4 @@ for ($index = 0; $index -lt $segments.Count; $index++) {
     $speaker.SetOutputToNull()
 }
 $speaker.Dispose()
-Write-Output '已生成 8 段中文语音讲解。'
+Write-Output ("已生成 {0} 段中文语音讲解。" -f $segments.Count)

@@ -34,3 +34,22 @@ export function toCSV(result) {
   ];
   return '\uFEFF' + rows.map(row => row.map(value => `"${String(value).replaceAll('"', '""')}"`).join(',')).join('\r\n');
 }
+
+// 保存参数后重新计算，不消费外部传入的 total 或 gain。
+export function comparePlans(aParams, bParams) {
+  const a = simulate(aParams);
+  const b = simulate(bParams);
+  return { a, b, timeDifference: a.total - b.total, gainDifference: b.gain - a.gain };
+}
+
+export function comparisonCSV({ a, b }) {
+  const rows = [
+    ['类型', '教学模拟：方案对比，不是实测或预测'],
+    ['项目', '方案 A', '方案 B', '差异 B - A'],
+    ...Object.entries({ coverage: 'AI覆盖率(%)', quality: '数据质量(%)', review: '复核成本(%)' }).map(([key, label]) => [label, a.params[key], b.params[key], b.params[key] - a.params[key]]),
+    ...a.stages.map((stage, i) => [stage.name + '(分钟)', stage.minutes.toFixed(2), b.stages[i].minutes.toFixed(2), (b.stages[i].minutes - stage.minutes).toFixed(2)]),
+    ['总耗时(分钟)', a.total.toFixed(2), b.total.toFixed(2), (b.total - a.total).toFixed(2)],
+    ['吞吐量变化(%) / 差异(百分点)', a.gain.toFixed(2), b.gain.toFixed(2), (b.gain - a.gain).toFixed(2)],
+  ];
+  return '\uFEFF' + rows.map(row => row.map(value => `"${String(value).replaceAll('"', '""')}"`).join(',')).join('\r\n');
+}

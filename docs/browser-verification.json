@@ -1,6 +1,6 @@
 {
-  "runId": "9ac80600-f6bf-4c2b-8825-67ffc137ab31",
-  "time": "2026-10-10T08:38:16.822Z",
+  "runId": "669773b7-5c35-40d6-9a53-34351854f987",
+  "time": "2026-10-10T10:01:18.912Z",
   "configuration": {
     "browser": "Chromium",
     "reducedMotion": "reduce",
@@ -14,12 +14,12 @@
     "url": "http://127.0.0.1:4173"
   },
   "sourceManifest": {
-    "dist/app.js": "63ee75586c8771733e1d496eb223c59c807ca80759b83ea2e6895f87c7a7206b",
-    "dist/data.js": "fec89db9a706b57a1212a901ef251993513ae6d53c476b7dd55c49c4ed9d29f8",
-    "dist/favicon.svg": "3bea29e33eb7510044f6ecec814b192acb4076f5a27099f15891fdd469527052",
-    "dist/index.html": "90122265c94ede975454123352776bcb0df58467f6970d3d408f08dc5fa97c95",
-    "dist/model.js": "62cdc834ca89c5ea13bf5dd46c14cf092b22249c2351b19b943b09deeeffa5dc",
-    "dist/styles.css": "fc9e9f5547564cc4fc230952e4ed4cdadfb8b1768c16b867ab3072ab25708958"
+    "dist/app.js": "7789d64b56d01e51aeaa52f5e700a81235919771b4cb608af4e4db750b25edf9",
+    "dist/data.js": "6f98d801c73624cfc9dab031a9f55e04ae1b24d37909fe947af609e0cfc692a6",
+    "dist/favicon.svg": "12e75256f5e7613ab361ac6358cab01651344ecf6c5254d348206b41d54544e1",
+    "dist/index.html": "920de2b42efa8799015f5a31d056eadc574973b10c58ddfd473cdba2f41d43eb",
+    "dist/model.js": "17b70893aff0f09e5d7e7c590379c2135c078ca9baf2ac613f07987c2bd20895",
+    "dist/styles.css": "ccd71180c2badfc162bf5a02cb014a707f1eccbe617664b2cb7bffa8908e13c7"
   },
   "checks": [
     "正式入口消费模型，默认 DOM 与模型结果一致",

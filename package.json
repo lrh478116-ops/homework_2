@@ -6,8 +6,9 @@
   "description": "智变：人工智能与新质生产力交互可视化网站",
   "scripts": {
     "start": "node scripts/serve.mjs",
-    "test": "node --test tests/model.test.mjs",
+    "test": "node --test tests/model.test.mjs tests/compare.test.mjs",
     "check": "node scripts/check.mjs",
-    "test:browser": "node tests/browser.mjs"
+    "test:browser": "node tests/browser.mjs",
+    "test:redesign": "node tests/redesign.mjs"
   }
 }

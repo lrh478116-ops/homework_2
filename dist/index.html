@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#090c13">
-  <meta name="description" content="智变：用可信数据、产业场景和交互实验探索人工智能作为新质生产力的作用与意义。">
-  <title>智变 · AI 新质生产力观察站</title>
+  <meta name="theme-color" content="#f6f8fb">
+  <meta name="description" content="用公开数据、产业流程和可比较的交互实验，理解人工智能怎样成为新质生产力。">
+  <title>人工智能与新质生产力 · 数据与交互实验</title>
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./styles.css">
 </head>
@@ -13,85 +13,78 @@
   <a class="skip" href="#main">跳转到主要内容</a>
   <div class="scroll-progress" id="scrollProgress"></div>
   <header class="topbar">
-    <a class="brand" href="#overview" aria-label="智变首页"><span class="brand-symbol">✳</span><span>智变<span class="brand-en">INTELLIGENCE IN MOTION</span></span></a>
-    <nav aria-label="主导航">
-      <a href="#trends">数据洞察</a><a href="#industries">产业图景</a><a href="#lab">生产力实验室</a>
-    </nav>
-    <button class="button subtle source-open"><span class="live-dot"></span> 数据与来源 <span>↗</span></button>
+    <a class="brand" href="#overview" aria-label="返回首页"><span class="brand-symbol">AI</span><span>新质生产力<span class="brand-en">数据 · 产业 · 交互实验</span></span></a>
+    <nav aria-label="主导航"><a href="#trends">看数据</a><a href="#industries">看产业</a><a href="#lab">比较方案</a></nav>
+    <button class="button subtle source-open">数据来源</button>
     <button class="menu-toggle" aria-label="展开导航" aria-expanded="false">☰</button>
   </header>
   <aside class="rail" aria-label="章节导航">
-    <span class="rail-caption">EXPLORATION</span>
-    <a href="#overview" class="active"><span>01</span> 概览</a>
-    <a href="#trends"><span>02</span> 全球趋势</a>
-    <a href="#mechanism"><span>03</span> 价值引擎</a>
-    <a href="#industries"><span>04</span> 产业图景</a>
-    <a href="#lab"><span>05</span> 生产力实验室</a>
-    <a href="#balance"><span>06</span> 未来的尺度</a>
-    <div class="rail-bottom"><span class="live-dot"></span> 公开数据 · 交互探索<small>数据快照 2026.10<br>非实时监测</small></div>
+    <span class="rail-caption">内容导航</span>
+    <a href="#overview" class="active"><span>01</span> 认识主题</a><a href="#trends"><span>02</span> 查看数据</a><a href="#mechanism"><span>03</span> 理解机制</a><a href="#industries"><span>04</span> 产业应用</a><a href="#lab"><span>05</span> 生产力实验</a><a href="#balance"><span>06</span> 发展与边界</a>
+    <div class="rail-bottom">公开数据与教学模拟<small>来源快照：2026 年 10 月<br>统计、研究、模拟分别标注</small></div>
   </aside>
   <main id="main">
     <section class="hero section" id="overview" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <div class="eyebrow"><span></span> AI × NEW QUALITY PRODUCTIVE FORCES</div>
-        <h1 id="hero-title">智能涌现，<br><em>生产力跃迁。</em></h1>
-        <p class="hero-description">当人工智能成为新的生产要素，改变的<br class="desktop-break">不只是效率，更是创造价值的方式。</p>
-        <div class="hero-actions"><a class="button primary" href="#trends">开启数据探索 <span>↗</span></a><button class="button secondary" id="tourStart"><span class="play-icon">▷</span> 亮点导览</button></div>
-        <div class="hero-footnote"><span class="tiny-line"></span> 以真实数据观察变化，以交互实验理解意义</div>
-      </div>
-      <div class="hero-visual">
-        <canvas id="globe" aria-label="数据、算力与人才连接的动态网络球体，装饰性概念图"></canvas>
-        <div class="orb-label label-data"><span class="orb-icon">▦</span><span>数据要素<small>DATA</small></span></div>
-        <div class="orb-label label-compute"><span class="orb-icon">◇</span><span>智能算力<small>COMPUTE</small></span></div>
-        <div class="orb-label label-human"><span class="orb-icon">✧</span><span>人机协同<small>COLLABORATION</small></span></div>
-        <div class="orb-caption"><span class="live-dot"></span> 从要素连接，到价值创造 <span>CONCEPT MAP</span></div>
-      </div>
+      <div class="hero-top"><div class="hero-copy">
+        <div class="eyebrow">人工智能与高质量发展</div>
+        <h1 id="hero-title">人工智能，<br>怎样成为<span>新质生产力</span>？</h1>
+        <p class="hero-description">用数据看变化，用产业流程看作用，用交互实验判断收益。<br>关键是让技术进入真实生产流程，改善效率、质量与资源配置。</p>
+        <div class="hero-actions"><a class="button primary" href="#lab">试算 AI 协作收益 →</a><button class="button secondary" id="tourStart">按步骤了解网站</button></div>
+      </div><div class="value-summary" aria-label="人工智能转化为生产力的概念关系">
+        <h2>从技术能力，到生产价值</h2>
+        <div><span>1</span><p><strong>数据与模型</strong>提供信息分析、生成与预测能力</p></div><div><span>2</span><p><strong>人机协作与流程改造</strong>让结果进入判断、执行和反馈</p></div><div><span>3</span><p><strong>生产率与质量提升</strong>用真实产出、成本与可靠性评价收益</p></div>
+        <small>概念解读：技术投入需要经过应用和执行，才能形成现实价值。</small>
+      </div></div>
       <div class="hero-metrics">
-        <article><span class="metric-label">组织 AI 采用率 <span>2025</span></span><strong>88<span>%</span></strong><p>相较 2023 年提高 33 个百分点</p><button data-source="stanford26">Stanford AI Index 2026 ↗</button></article>
-        <article><span class="metric-label">客服任务生产率 <span>研究结果</span></span><strong>+14<span>%</span></strong><p>每小时解决问题数的平均提升</p><button data-source="nber">NBER · 工作场景研究 ↗</button></article>
-        <article><span class="metric-label">同等基准能力推理价格 <span>2022—2024</span></span><strong>280<span>× ↓</span></strong><p>成本下降，打开更广的应用空间</p><button data-source="cost">Stanford AI Index 2025 ↗</button></article>
-      </div>
-      <div class="hero-bottom"><span>技术的意义，发生在它改变生产的那一刻。</span><a href="#trends">向下探索 <span>↓</span></a></div>
+        <article><span class="metric-label">组织使用 AI <span>2025 年调查</span></span><strong>88<span>%</span></strong><p>说明 AI 的应用正在扩散</p><button data-source="stanford26">调查口径与来源 ↗</button></article>
+        <article><span class="metric-label">客服任务生产率 <span>工作场景研究</span></span><strong>+14<span>%</span></strong><p>每小时解决问题数的平均提升</p><button data-source="nber">研究版本与适用边界 ↗</button></article>
+        <article><span class="metric-label">同等基准能力调用价格 <span>2022—2024 年</span></span><strong>&gt;280<span>倍下降</span></strong><p>更低的应用门槛，不等于零部署成本</p><button data-source="cost">价格定义与来源 ↗</button></article>
+      </div><p class="overview-note"><strong>阅读提示：</strong>以上指标衡量不同问题，不能相加；实验室里的数值由教学假设计算，不是企业预测。</p>
     </section>
-
     <section class="section" id="trends" aria-labelledby="trends-title">
-      <div class="section-heading"><div><div class="eyebrow">02 / THE GLOBAL SHIFT</div><h2 id="trends-title">一场正在发生的生产变革</h2><p>从实验走向应用，从少数人使用走向组织能力。</p></div><button class="button subtle" data-source="stanford26">查看数据口径 ↗</button></div>
+      <div class="section-heading"><div><div class="eyebrow">02 · 数据证据</div><h2 id="trends-title">AI 的应用发生了哪些变化？</h2><p>看清采用率、投入和调用价格各自代表什么。</p></div><button class="button subtle" data-source="stanford26">查看统计口径</button></div>
       <div class="trend-layout">
-        <article class="panel adoption-panel"><div class="panel-head"><div><span class="micro">技术扩散</span><h3>AI 正在进入日常生产</h3></div><span class="tag">调查数据</span></div><div class="chart-legend"><span><i class="legend-lime"></i> 受访组织使用 AI 的比例</span><span>单位：%</span></div><div id="adoptionChart" class="chart"></div><div class="year-selector" aria-label="选择调查年份"><button data-year="2023">2023</button><button data-year="2024">2024</button><button data-year="2025" class="selected">2025</button></div><div class="chart-insight"><strong id="adoptionValue">88%</strong><p id="adoptionInsight">2025 年，88% 的受访组织报告使用 AI。<br>使用 AI 与全面实现商业价值之间，仍有距离。</p></div><p class="source-note">Stanford AI Index 2025 / 2026 · 各年调查样本可能不同，不是同一队列追踪。</p></article>
-        <article class="panel investment-panel"><div class="panel-head"><div><span class="micro">资本与基础设施</span><h3>投入重塑创新版图</h3></div><span class="tag">2025</span></div><p class="chart-subtitle">部分地区的私营 AI 投资 · 十亿美元</p><div id="investmentChart" class="bar-chart"></div><div class="investment-insight"><span>≠</span><p><strong>投资额不等于生产率</strong><br>技术投入只有转化为可执行的业务流程，才能形成现实生产力。</p></div><p class="source-note">Stanford AI Index 2026 · 欧洲为区域汇总；仅私人投资，不含全部政府投入，不作为完整国家排名。</p></article>
+        <article class="panel adoption-panel"><div class="panel-head"><h3>组织 AI 采用率</h3><span class="tag">调查数据</span></div><div class="chart-legend"><span><i class="legend-lime"></i> 受访组织使用 AI 的比例</span><span>单位：%</span></div><div id="adoptionChart" class="chart"></div><div class="year-selector" aria-label="选择调查年份"><button data-year="2023">2023 年</button><button data-year="2024">2024 年</button><button data-year="2025" class="selected">2025 年</button></div><div class="chart-insight"><strong id="adoptionValue">88%</strong><p id="adoptionInsight"></p></div>
+          <details id="rawData" class="raw-data"><summary>查看三年原始记录与来源</summary><div class="table-scroll"><table><thead><tr><th>年份</th><th>采用率</th><th>来源</th></tr></thead><tbody><tr><td>2023</td><td>55%</td><td><button data-source="stanford25">AI Index 2025</button></td></tr><tr><td>2024</td><td>78%</td><td><button data-source="stanford25">AI Index 2025</button></td></tr><tr><td>2025</td><td>88%</td><td><button data-source="stanford26">AI Index 2026</button></td></tr></tbody></table></div></details>
+          <p class="source-note">Stanford AI Index 2025 / 2026。各年度调查样本可能不同，不是同一企业队列追踪。</p>
+        </article>
+        <article class="panel investment-panel"><div class="panel-head"><h3>部分地区的私营 AI 投资</h3><span class="tag">2025 年</span></div><p class="chart-subtitle">同一长度刻度比较投入规模 · 单位：十亿美元</p><div id="investmentChart" class="bar-chart"></div><div class="investment-insight"><strong>投入怎样变成收益？</strong><p>资本支持技术和基础设施。只有技术进入可执行的业务流程，才能用真实产出衡量其价值。</p></div><p class="source-note">Stanford AI Index 2026。欧洲为区域汇总；仅私人投资，不含全部政府投入，不作为完整国家排名。</p></article>
       </div>
-      <div class="cost-strip"><div class="cost-strip-copy"><span class="micro">应用门槛的变化</span><h3>同样的能力，更低的调用价格。</h3><p>固定 MMLU 能力阈值下，不同模型的 API 价格比较。</p></div><div class="cost-compare"><div><span>2022.11</span><strong>$20.00</strong><small>每百万 token</small></div><span class="cost-arrow">⟶</span><div class="lime"><span>2024.10</span><strong>$0.07</strong><small>每百万 token</small></div></div><button class="round-button" data-source="cost" aria-label="查看推理成本来源">↗</button></div>
+      <div class="cost-strip"><div><h3>固定基准能力下，调用价格下降</h3><p>达到 GPT-3.5 水平 MMLU 阈值的不同模型 API 价格比较。</p></div><div class="cost-compare"><div><span>2022 年 11 月</span><strong>$20.00</strong><small>每百万 token</small></div><span class="cost-arrow">→</span><div><span>2024 年 10 月</span><strong>$0.07</strong><small>每百万 token</small></div></div><button class="button subtle" data-source="cost">查看来源</button></div>
     </section>
-
     <section class="section" id="mechanism" aria-labelledby="mechanism-title">
-      <div class="section-heading"><div><div class="eyebrow">03 / THE VALUE ENGINE</div><h2 id="mechanism-title">AI 如何成为新质生产力？</h2><p>连接数据、工具与人才，让“能做”转化为“创造价值”。</p></div><span class="tag">概念解读 · 可点击探索</span></div>
-      <div class="mechanism-layout"><div class="engine-diagram" id="engineDiagram"><div class="engine-orbit orbit-one"></div><div class="engine-orbit orbit-two"></div><div class="engine-center"><span>✳</span><strong>人工智能</strong><small>INTELLIGENCE ENGINE</small></div><button class="engine-node node-people selected" data-factor="people"><span>01</span> 劳动者<small>能力跃升</small></button><button class="engine-node node-tools" data-factor="tools"><span>02</span> 劳动资料<small>工具升级</small></button><button class="engine-node node-data" data-factor="data"><span>03</span> 劳动对象<small>数据驱动</small></button><button class="engine-node node-system" data-factor="system"><span>04</span> 要素协同<small>组织创新</small></button></div><article class="factor-detail" aria-live="polite"><span class="micro" id="factorNumber">01 / PEOPLE</span><h3 id="factorTitle">劳动者：从重复执行到创造与判断</h3><p id="factorText"></p><div id="factorChain" class="factor-chain"></div><div class="factor-meaning"><span>价值发生的条件</span><p id="factorCondition"></p></div><button class="text-button" data-source="policy">新质生产力的概念依据 ↗</button></article></div>
-      <div class="qualities"><article><span>HIGH TECHNOLOGY</span><strong>高科技</strong><p>以技术创新打开新的生产可能</p></article><article><span>HIGH EFFICIENCY</span><strong>高效能</strong><p>以要素协同改善资源配置</p></article><article><span>HIGH QUALITY</span><strong>高质量</strong><p>以可靠、绿色、普惠的供给创造价值</p></article></div>
+      <div class="section-heading"><div><div class="eyebrow">03 · 作用机制</div><h2 id="mechanism-title">AI 改变了哪些生产要素？</h2><p>选择一个要素，查看作用过程与价值形成条件。</p></div><span class="tag">概念解读</span></div>
+      <div class="mechanism-layout"><div class="engine-diagram" id="engineDiagram"><div class="engine-center"><strong>人工智能的四个作用方向</strong></div><button class="engine-node selected" data-factor="people"><span>01</span><strong>劳动者</strong><small>知识辅助与能力提升</small></button><button class="engine-node" data-factor="tools"><span>02</span><strong>劳动资料</strong><small>生产工具的智能化</small></button><button class="engine-node" data-factor="data"><span>03</span><strong>劳动对象</strong><small>让数据成为可用要素</small></button><button class="engine-node" data-factor="system"><span>04</span><strong>要素协同</strong><small>流程与资源配置优化</small></button></div><article class="factor-detail" aria-live="polite"><span class="micro" id="factorNumber"></span><h3 id="factorTitle"></h3><p id="factorText"></p><div id="factorChain" class="factor-chain"></div><div class="factor-meaning"><strong>价值形成条件</strong><p id="factorCondition"></p></div><button class="text-button" data-source="policy">查看概念依据 ↗</button></article></div>
+      <div class="qualities"><article><strong>高科技</strong><p>创新拓展生产能力</p></article><article><strong>高效能</strong><p>协同改善资源配置</p></article><article><strong>高质量</strong><p>可靠、绿色、普惠的价值</p></article></div>
     </section>
-
     <section class="section" id="industries" aria-labelledby="industries-title">
-      <div class="section-heading"><div><div class="eyebrow">04 / INDUSTRIES IN MOTION</div><h2 id="industries-title">走进 AI 改变的生产现场</h2><p>同一种技术，在不同产业中形成不同的价值闭环。</p></div><span class="tag">6 个场景 · 机制示意</span></div>
-      <div class="industry-tabs" id="industryTabs" role="tablist" aria-label="选择产业"></div>
-      <div class="industry-content" id="industryContent" role="tabpanel" aria-live="polite"></div>
+      <div class="section-heading"><div><div class="eyebrow">04 · 产业应用</div><h2 id="industries-title">AI 怎样进入具体生产流程？</h2><p>选择产业，再点击流程中的某一步，查看作用和核查点。</p></div><span class="tag">6 个场景 · 机制示意</span></div>
+      <div class="industry-tabs" id="industryTabs" role="tablist" aria-label="选择产业"></div><div class="industry-content" id="industryContent" role="tabpanel" aria-live="polite"></div>
     </section>
-
     <section class="section" id="lab" aria-labelledby="lab-title">
-      <div class="section-heading"><div><div class="eyebrow">05 / PRODUCTIVITY LAB</div><h2 id="lab-title">亲手调节一场生产力变革</h2><p>AI 提速不等于整体提速。试试看，什么条件下收益才会出现？</p></div><span class="tag amber">教学模拟 · 非实际预测</span></div>
-      <div class="lab-layout"><article class="panel lab-controls"><div class="panel-head"><h3>设定你的工作方式</h3><button class="text-button" id="resetLab">重置 ↺</button></div><p class="chart-subtitle">以一项传统耗时 100 分钟的知识工作为例。</p><label for="coverage">AI 任务覆盖率 <output id="coverageOutput">70%</output></label><input type="range" id="coverage" min="0" max="100" value="70"><small>多少任务环节有 AI 参与</small><label for="quality">数据与工具质量 <output id="qualityOutput">80%</output></label><input type="range" id="quality" min="0" max="100" value="80"><small>模型能否获得可靠、适用的输入</small><label for="review">额外复核成本 <output id="reviewOutput">20%</output></label><input type="range" id="review" min="0" max="100" value="20"><small>按覆盖率追加最多 30 分钟的复核负担</small><div class="lab-presets"><button data-preset="healthy">协同成熟</button><button data-preset="friction">复核过重</button><button data-preset="off">关闭 AI</button></div><details class="formula"><summary>查看模型假设与计算公式</summary><p>各阶段基础耗时为 25、30、30、15 分钟；最大节时系数分别为 65%、35%、60%、0%。这些系数均为教学假设。</p><p>有效参与 = 覆盖率 × 质量。<br>阶段耗时 = 原耗时 × (1 − 节时系数 × 有效参与)。<br>额外复核 = 30 × 覆盖率 × 复核成本，计入交付阶段。<br>吞吐量变化 = (100 ÷ 新总耗时 − 1) × 100%。</p><p>百分比参数在公式中按 0–1 取值；不建模实施费用、排队、学习曲线和质量损失。</p></details></article>
-      <article class="panel lab-results"><div class="panel-head"><h3>从单项任务，到整条工作流</h3><button class="text-button" id="exportLab">导出模拟 CSV ↓</button></div><div class="chart-legend"><span><i class="legend-muted"></i> 传统流程</span><span><i class="legend-lime"></i> AI 协作</span><span>单位：分钟</span></div><div id="workflowChart" class="workflow-chart"></div><div class="lab-numbers" aria-live="polite"><div><span>协作后总耗时</span><strong id="totalTime"></strong></div><div><span>节省时间</span><strong id="savedTime"></strong></div><div><span>同时间吞吐量变化</span><strong id="throughput"></strong></div></div><div id="labInsight" class="lab-insight" aria-live="polite"></div></article></div>
+      <div class="section-heading"><div><div class="eyebrow">05 · 生产力实验室</div><h2 id="lab-title">什么条件下，AI 能带来净收益？</h2><p>调整参数，看整体工作流的变化；保存两个方案，比较哪种改进更有效。</p></div><span class="tag amber">教学模拟 · 非实际预测</span></div>
+      <div class="lab-layout"><article class="panel lab-controls"><div class="panel-head"><h3>1. 设置参数</h3><button class="text-button" id="resetLab">恢复默认</button></div><p class="chart-subtitle">传统流程基础耗时：100 分钟。</p>
+        <div class="parameter"><label for="coverage">AI 任务覆盖率 <output id="coverageOutput">70%</output></label><div class="range-input"><input type="range" id="coverage" min="0" max="100" value="70"><div><input type="number" id="coverageNumber" min="0" max="100" step="1" value="70" aria-label="AI任务覆盖率数字输入"><span>%</span></div></div><small>多少任务环节有 AI 参与。</small></div>
+        <div class="parameter"><label for="quality">数据与工具质量 <output id="qualityOutput">80%</output></label><div class="range-input"><input type="range" id="quality" min="0" max="100" value="80"><div><input type="number" id="qualityNumber" min="0" max="100" step="1" value="80" aria-label="数据与工具质量数字输入"><span>%</span></div></div><small>输入是否可靠、适用，工具能否有效工作。</small></div>
+        <div class="parameter"><label for="review">额外复核成本 <output id="reviewOutput">20%</output></label><div class="range-input"><input type="range" id="review" min="0" max="100" value="20"><div><input type="number" id="reviewNumber" min="0" max="100" step="1" value="20" aria-label="额外复核成本数字输入"><span>%</span></div></div><small>按覆盖率追加最多 30 分钟的复核负担。</small></div>
+        <p id="labError" class="form-error" role="alert" hidden></p><div class="lab-presets"><span>快速试验</span><button data-preset="healthy">协同成熟</button><button data-preset="friction">复核过重</button><button data-preset="off">关闭 AI</button></div>
+        <details class="formula"><summary>查看假设与计算公式</summary><p>基础阶段耗时：25、30、30、15 分钟。最大节时系数：65%、35%、60%、0%。系数均为教学假设。</p><p>有效参与 = 覆盖率 × 质量。<br>阶段耗时 = 原耗时 × (1 − 节时系数 × 有效参与)。<br>额外复核 = 30 × 覆盖率 × 复核成本，计入交付阶段。<br>吞吐量变化 = (100 ÷ 新总耗时 − 1) × 100%。</p><p>百分比按 0–1 取值；未建模实施费用、排队、学习曲线和质量损失。</p></details>
+      </article><article class="panel lab-results"><div class="panel-head"><h3>2. 查看当前结果</h3><button class="text-button" id="exportLab">导出当前结果 CSV ↓</button></div><div class="lab-numbers" aria-live="polite"><div><span>协作后总耗时</span><strong id="totalTime"></strong></div><div><span>节省时间</span><strong id="savedTime"></strong></div><div><span>同时间吞吐量变化</span><strong id="throughput"></strong></div></div><div id="labInsight" class="lab-insight" aria-live="polite"></div><div class="chart-legend"><span><i class="legend-muted"></i> 传统流程</span><span><i class="legend-lime"></i> AI 协作</span><span>单位：分钟</span></div><div id="workflowChart" class="workflow-chart"></div></article></div>
+      <article class="panel plan-comparison" aria-labelledby="comparisonTitle"><div class="panel-head"><div><h3 id="comparisonTitle">3. 保存并比较两种方案</h3><p>暂存当前参数为 A 或 B，改变输入后仍能回看。方案只保留在当前页面，刷新会清空。</p></div><button class="text-button" id="clearPlans">清空两方案</button></div>
+        <div class="plan-cards"><div><div class="plan-heading"><strong>方案 A</strong><button class="button secondary" id="savePlanA">保存当前为 A</button></div><p id="planAParams">尚未保存参数</p><strong id="planAResult">未保存</strong></div><div><div class="plan-heading"><strong>方案 B</strong><button class="button secondary" id="savePlanB">保存当前为 B</button></div><p id="planBParams">尚未保存参数</p><strong id="planBResult">未保存</strong></div></div>
+        <p id="comparisonInsight" class="comparison-insight" aria-live="polite">先保存方案 A，调整参数后再保存方案 B，即可查看对比。</p><div class="table-scroll"><table class="comparison-table"><thead><tr><th>比较项目</th><th>方案 A</th><th>方案 B</th><th>差异 B − A</th></tr></thead><tbody></tbody></table></div><div class="comparison-footer"><p>耗时差为负，表示 B 更快；吞吐量差使用百分点。比较基于相同教学假设。</p><button class="button secondary" id="exportComparison" disabled>导出两方案对比 CSV ↓</button></div>
+      </article>
     </section>
-
     <section class="section" id="balance" aria-labelledby="balance-title">
-      <div class="section-heading"><div><div class="eyebrow">06 / A BETTER BALANCE</div><h2 id="balance-title">更强的生产力，也需要更好的尺度</h2><p>高质量发展，需要同时衡量效率、能源与人的成长。</p></div><button class="button subtle" data-source="iea">能源数据来源 ↗</button></div>
-      <div class="balance-layout"><article class="panel energy-panel"><div class="panel-head"><div><span class="micro">绿色发展的约束</span><h3>算力增长背后的能源需求</h3></div><span class="tag">TWh / 年</span></div><div id="energyChart" class="energy-chart"></div><div class="chart-legend"><span><i class="legend-lime"></i> 2025 估计值</span><span><i class="legend-dashed"></i> 2030 中心情景预测</span></div><p class="energy-caption">约 <strong>1.96 倍</strong> 的耗电规模，需要效率提升与清洁能源共同支撑。</p><p class="source-note">IEA 2026 · 全球全部数据中心耗电，包含非 AI 负载；2030 年为预测，不能全部归因于 AI。</p></article><div class="governance"><button class="governance-item open" aria-expanded="true"><span class="governance-index">01</span><div><h3>让效率与绿色同行</h3><p>关注单位有效任务的能耗，匹配任务与模型规模，以清洁能源和资源调度改善系统效率。</p></div><span class="accordion-mark">−</span></button><button class="governance-item" aria-expanded="false"><span class="governance-index">02</span><div><h3>让工具与人的成长同行</h3><p>把培训、领域判断和自主思考纳入工作流；对任务变化与新岗位需求进行持续评估。</p></div><span class="accordion-mark">+</span></button><button class="governance-item" aria-expanded="false"><span class="governance-index">03</span><div><h3>让创新与可信治理同行</h3><p>建立数据授权、结果复核、责任追踪和人工接管机制，让真实业务价值与风险同时可见。</p></div><span class="accordion-mark">+</span></button></div></div>
-      <div class="closing"><span class="closing-star">✳</span><p>人工智能的价值，<br>是让人拥有<span>创造更多可能</span>的能力。</p><button class="button primary source-open">探索证据库 <span>↗</span></button></div>
+      <div class="section-heading"><div><div class="eyebrow">06 · 发展与边界</div><h2 id="balance-title">效率之外，还需要衡量什么？</h2><p>人工智能作为新质生产力，也需要绿色发展、人才成长与可信治理。</p></div><button class="button subtle" data-source="iea">能源数据来源</button></div>
+      <div class="balance-layout"><article class="panel energy-panel"><div class="panel-head"><h3>全球数据中心年耗电</h3><span class="tag">TWh / 年</span></div><div id="energyChart" class="energy-chart"></div><div class="chart-legend"><span><i class="legend-lime"></i> 2025 年估计</span><span><i class="legend-dashed"></i> 2030 年中心情景预测</span></div><p class="energy-caption">预测规模约为 2025 年的 <strong>1.96 倍</strong>。</p><p class="source-note">IEA 2026。包括非 AI 负载，不能全部归因于 AI；2030 年是预测，存在不确定性。</p></article><div class="governance"><button class="governance-item open" aria-expanded="true"><span class="governance-index">1</span><div><h3>能源与绿色发展</h3><p>关注单位有效任务的能耗，匹配任务与模型规模，以清洁能源和资源调度改善效率。</p></div><span class="accordion-mark">−</span></button><button class="governance-item" aria-expanded="false"><span class="governance-index">2</span><div><h3>劳动者与能力成长</h3><p>把培训、领域判断和自主思考纳入流程；持续评估任务变化、新岗位需求和数字鸿沟。</p></div><span class="accordion-mark">+</span></button><button class="governance-item" aria-expanded="false"><span class="governance-index">3</span><div><h3>可靠性与责任治理</h3><p>建立数据授权、结果复核、责任追踪和人工接管机制，同时衡量业务价值与风险。</p></div><span class="accordion-mark">+</span></button></div></div>
+      <div class="closing"><div><h3>技术能力，经过可靠应用，才能形成生产价值。</h3><p>看效率，也看质量；看收益，也看实现收益的条件。</p></div><button class="button primary source-open">查找数据与研究来源</button></div>
     </section>
-    <footer><a class="brand" href="#overview"><span class="brand-symbol">✳</span> 智变</a><p>人工智能 × 新质生产力 · 交互可视化作品<br><small>统计、研究与模拟均标明口径 · 来源核查 2026 年 10 月 10 日</small></p><button class="text-button" id="exportData">下载公开数据 CSV ↓</button><a class="text-button" href="#overview">返回顶部 ↑</a></footer>
+    <footer><p>人工智能与新质生产力 · 交互可视化作业<br><small>来源核查：2026 年 10 月 10 日 · 历史快照，非实时监测</small></p><button class="text-button" id="exportData">下载公开数据 CSV ↓</button><a class="text-button" href="#overview">返回顶部 ↑</a></footer>
   </main>
-  <dialog id="sourceDialog" aria-labelledby="sourceTitle"><div class="dialog-header"><div><div class="eyebrow">THE EVIDENCE LIBRARY</div><h2 id="sourceTitle">每一个数字，都有来处。</h2></div><button id="closeSources" class="round-button" aria-label="关闭来源面板">×</button></div><p class="dialog-intro">公开来源快照 · 核查日期 2026.10.10。真实统计、工作场景研究与教学模拟分别呈现；这里保留年份、口径与局限。</p><div id="sourceList"></div><div class="dialog-footer"><span>实验室系数与产业流程为作者教学设计。</span><button class="button secondary" id="exportDataDialog">下载数据 CSV ↓</button></div></dialog>
-  <div class="tour-panel" id="tourPanel" hidden><div class="tour-top"><span>HIGHLIGHT TOUR</span><button id="tourClose" aria-label="结束导览">×</button></div><h3 id="tourTitle"></h3><p id="tourText"></p><div class="tour-bottom"><span id="tourCount"></span><button id="tourPrev" aria-label="上一个亮点">←</button><button id="tourNext">下一个亮点 →</button></div></div>
-  <div class="toast" id="toast" role="status" hidden></div>
-  <noscript><div class="noscript">当前浏览器禁用了 JavaScript。请启用它以使用图表、来源面板和生产力模拟。</div></noscript>
+  <dialog id="sourceDialog" aria-labelledby="sourceTitle"><div class="dialog-header"><div><h2 id="sourceTitle">数据与研究来源</h2><p>查看年份、口径与局限，区分统计、研究与模拟。</p></div><button id="closeSources" class="round-button" aria-label="关闭来源面板">×</button></div><div class="source-search"><label for="sourceSearch">查找来源</label><div><input id="sourceSearch" type="search" placeholder="输入名称、年份或关键词，例如 IEA" autocomplete="off"><button class="text-button" id="clearSourceSearch">清除</button></div><p id="sourceCount" role="status"></p></div><div id="sourceList"></div><p id="sourceEmpty" class="empty-state" hidden>没有找到匹配来源，请换一个关键词或清除搜索。</p><div class="dialog-footer"><span>产业流程为概念示意，实验系数为教学假设。</span><button class="button secondary" id="exportDataDialog">下载公开数据 CSV ↓</button></div></dialog>
+  <div class="tour-panel" id="tourPanel" hidden><div class="tour-top"><span>阅读导览</span><button id="tourClose" aria-label="结束导览">×</button></div><h3 id="tourTitle"></h3><p id="tourText"></p><div class="tour-bottom"><span id="tourCount"></span><button id="tourPrev" aria-label="上一个亮点">←</button><button id="tourNext">下一步 →</button></div></div>
+  <div class="toast" id="toast" role="status" hidden></div><noscript><div class="noscript">请启用 JavaScript，以使用交互图表、来源搜索与方案对比。</div></noscript>
   <script type="module" src="./app.js"></script>
 </body>
 </html>

@@ -1,0 +1,113 @@
+import { createRequire } from 'node:module';
+import { createHash, randomUUID } from 'node:crypto';
+import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
+import assert from 'node:assert/strict';
+import { simulate, defaults } from '../dist/model.js';
+const require = createRequire(import.meta.url);
+let chromium;
+try { ({ chromium } = require('playwright')); }
+catch { ({ chromium } = require('C:/Users/22808/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright')); }
+const executablePath = ['C:/Program Files/Google/Chrome/Application/chrome.exe', 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe'].find(existsSync);
+const browser = await chromium.launch({ headless: true, ...(executablePath ? { executablePath } : {}) });
+const page = await browser.newPage({ viewport: { width: 1440, height: 1000 }, reducedMotion: 'reduce' });
+const url = process.env.TEST_BASE_URL || 'http://127.0.0.1:4173';
+const errors = []; const checks = [];
+page.on('pageerror', e => errors.push(e.message));
+await page.goto(url, { waitUntil: 'networkidle' });
+assert.equal(await page.locator('#savePlanA').count(), 1, '新增实用交互必须在正式入口存在');
+
+async function numbers(params) {
+  for (const [key, value] of Object.entries(params)) await page.locator(`#${key}Number`).fill(String(value));
+}
+await numbers({ coverage: 35, quality: 90, review: 10 });
+assert.equal(await page.locator('#coverage').inputValue(), '35');
+assert.equal(await page.locator('#coverageOutput').textContent(), '35%');
+assert.ok((await page.locator('#totalTime').textContent()).startsWith(simulate({ coverage: 35, quality: 90, review: 10 }).total.toFixed(1)));
+checks.push('数字输入同步滑块、标签和真实模型输出');
+await page.locator('#coverage').fill('70');
+assert.equal(await page.locator('#coverageNumber').inputValue(), '70');
+checks.push('滑块反向同步数字输入');
+await page.locator('#resetLab').click(); await page.locator('#savePlanA').click();
+const savedA = await page.locator('#planAResult').textContent();
+await page.locator('[data-preset="friction"]').click(); await page.locator('#savePlanB').click();
+assert.ok(savedA.includes(simulate(defaults).total.toFixed(1)));
+assert.ok((await page.locator('#planBResult').textContent()).includes(simulate({ coverage: 100, quality: 20, review: 95 }).total.toFixed(1)));
+assert.ok((await page.locator('#comparisonInsight').textContent()).includes('方案 A'));
+await page.locator('#qualityNumber').fill('55');
+assert.equal(await page.locator('#planAResult').textContent(), savedA);
+checks.push('保存A/B后独立重算，改变当前输入不会篡改快照');
+const [download] = await Promise.all([page.waitForEvent('download'), page.locator('#exportComparison').click()]);
+mkdirSync('docs/screenshots', { recursive: true });
+await download.saveAs('docs/screenshots/browser-comparison.csv');
+const csv = readFileSync('docs/screenshots/browser-comparison.csv', 'utf8');
+assert.ok(csv.includes('方案 A') && csv.includes('方案 B') && csv.includes('教学模拟'));
+assert.ok(csv.includes(simulate(defaults).total.toFixed(2)));
+checks.push('对比CSV消费已保存的两组参数，与当前滑块状态分离');
+await page.locator('#qualityNumber').fill('');
+assert.ok(!(await page.locator('#labError').isHidden()));
+assert.equal(await page.locator('#throughput').textContent(), '—');
+assert.ok(await page.locator('#exportLab').isDisabled()); assert.ok(await page.locator('#savePlanA').isDisabled());
+await page.locator('#qualityNumber').fill('101');
+assert.equal(await page.locator('#throughput').textContent(), '—');
+assert.ok(await page.locator('#savePlanB').isDisabled());
+assert.equal(await page.locator('#qualityOutput').textContent(), '—');
+assert.equal(await page.locator('#qualityNumber').getAttribute('aria-invalid'), 'true');
+await page.locator('#qualityNumber').fill('30.5');
+assert.equal(await page.locator('#throughput').textContent(), '—');
+await page.locator('#resetLab').click(); assert.ok(!(await page.locator('#exportLab').isDisabled()));
+assert.equal(await page.locator('#throughput').textContent(), `+${simulate(defaults).gain.toFixed(1)}%`);
+checks.push('空值/越界/非整数清空当前结果并阻断保存与导出，重置后恢复');
+await page.locator('.plan-comparison').scrollIntoViewIfNeeded();
+await page.screenshot({ path: 'docs/screenshots/06-comparison.png' });
+for (const width of [1440, 1024, 768, 390, 320]) {
+  await page.setViewportSize({ width, height: 1000 });
+  const overflow = await page.evaluate(() => document.documentElement.scrollWidth > innerWidth);
+  assert.equal(overflow, false, `方案对比状态下整页溢出 at ${width}`);
+}
+checks.push('保存两方案后五断点布局无整页溢出，表格在容器内滚动');
+await page.setViewportSize({ width: 1440, height: 1000 });
+await page.locator('#clearPlans').click();
+assert.ok(await page.locator('#exportComparison').isDisabled());
+assert.equal(await page.locator('.comparison-table tbody tr').count(), 0);
+checks.push('清空方案不保留旧对比或可导出状态');
+await page.locator('[data-industry="manufacturing"]').click(); await page.locator('[data-step="3"]').click();
+assert.ok((await page.locator('#stepTitle').textContent()).includes('工单执行'));
+await page.locator('[data-industry="service"]').click();
+assert.ok((await page.locator('#stepTitle').textContent()).includes('客户问题'));
+await page.locator('[data-step="4"]').click();
+assert.ok((await page.locator('#stepTitle').textContent()).includes('问题解决'));
+checks.push('步骤读取当前产业，切换产业时重置旧步骤与说明');
+await page.locator('.source-open').first().click();
+await page.locator('#sourceSearch').fill('IEA'); assert.equal(await page.locator('.source-card').count(), 1);
+assert.ok((await page.locator('#sourceCount').textContent()).includes('1'));
+await page.locator('#sourceSearch').fill('不存在的资料zz'); assert.equal(await page.locator('.source-card').count(), 0);
+assert.ok(await page.locator('#sourceEmpty').isVisible());
+await page.locator('#clearSourceSearch').click(); assert.equal(await page.locator('.source-card').count(), 6);
+await page.locator('#closeSources').click();
+checks.push('来源搜索、数量、明确空结果与清除搜索一致');
+await page.locator('#rawData summary').click();
+assert.equal(await page.locator('#rawData tbody tr').count(), 3);
+checks.push('原始记录表提供三年真实比例与来源');
+const visual = await page.evaluate(() => ({ background: getComputedStyle(document.body).backgroundColor, font: parseFloat(getComputedStyle(document.querySelector('.hero-description')).fontSize), canvas: document.querySelectorAll('canvas').length }));
+assert.equal(visual.background, 'rgb(246, 248, 251)'); assert.ok(visual.font >= 16); assert.equal(visual.canvas, 0);
+checks.push('浅色背景、可读字号、移除装饰动画');
+const contrast = await page.evaluate(() => {
+  const luminance = color => {
+    const rgb = color.match(/\d+/g).slice(0, 3).map(Number).map(v => { const x = v / 255; return x <= .04045 ? x / 12.92 : ((x + .055) / 1.055) ** 2.4; });
+    return rgb[0] * .2126 + rgb[1] * .7152 + rgb[2] * .0722;
+  };
+  return ['.hero-description', '.source-note', '.factor-detail>p', '.step-detail p', '.primary'].map(selector => {
+    const el = document.querySelector(selector);
+    const fg = luminance(getComputedStyle(el).color);
+    let parent = el, background;
+    while (parent) { const value = getComputedStyle(parent).backgroundColor; if (value !== 'rgba(0, 0, 0, 0)') { background = value; break; } parent = parent.parentElement; }
+    const bg = luminance(background);
+    return { selector, ratio: (Math.max(fg, bg) + .05) / (Math.min(fg, bg) + .05) };
+  });
+});
+assert.ok(contrast.every(x => x.ratio >= 4.5), JSON.stringify(contrast));
+checks.push('主要正文、来源说明和主要按钮文字对比度至少4.5:1');
+assert.deepEqual(errors, []);
+const manifest = Object.fromEntries(readdirSync('dist').map(file => [`dist/${file}`, createHash('sha256').update(readFileSync(`dist/${file}`)).digest('hex')]));
+writeFileSync(process.env.REDESIGN_REPORT_FILE || 'docs/redesign-verification.json', JSON.stringify({ runId: randomUUID(), time: new Date().toISOString(), url, sourceManifest: manifest, checks, errors, result: 'passed' }, null, 2));
+await browser.close(); console.log(`PASS: ${checks.length} redesign formal-path checks.`, checks);

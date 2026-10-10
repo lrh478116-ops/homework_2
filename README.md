@@ -14,13 +14,14 @@ node scripts/serve.mjs
 
 ## 内容
 
-- 380 个节点的 Canvas 网络球体（概念视觉，非观测数据）。
+- 浅色阅读布局、中文主问题、简单的“技术 → 协作 → 价值”关系。
 - 2023–2025 AI 采用率 SVG 图表与年份选择。
 - 地区私人投资对比与推理成本对照。
 - 四要素价值引擎及可点击解释。
-- 六产业场景、传统/协作对比及五步反馈流程。
-- 三参数生产力实验、负收益情景、关闭 AI 控制与 CSV 导出。
-- 能源估计/预测对比、治理展开面板、来源证据库。
+- 六产业场景、传统/协作对比、可点击的五步流程和核查点。
+- 滑块/数字输入双向同步、负收益与关闭 AI 控制、当前 CSV 导出。
+- A/B 参数快照独立重算，阶段与总体结果对比，支持对比 CSV 导出。
+- 能源估计/预测对比、治理展开面板、可搜索来源库与零结果提示。
 - 六步讲解导览、键盘导航与移动端适配。
 
 ## 数据与公式
@@ -30,10 +31,11 @@ node scripts/serve.mjs
 ## 验证
 
 ```powershell
-node --test tests/model.test.mjs
+node --test tests/model.test.mjs tests/compare.test.mjs
 node scripts/check.mjs
 # 启动预览服务后，在另一个终端执行；需安装或环境提供 playwright
 node tests/browser.mjs
+node tests/redesign.mjs
 ```
 
 若具有 npm，也可以用 `npm test`、`npm run check`、`npm run test:browser`。浏览器测试需要 Playwright 和 Chromium；已提供当前 Codex 环境路径作为本机验证兼容项。其他电脑执行 `npm install --no-save playwright` 与 `npx playwright install chromium` 后运行。
@@ -57,3 +59,7 @@ git push -u origin main
 在 GitHub 仓库的 Settings → Pages → Build and deployment，将 Source 设为 **GitHub Actions**，再运行 Deploy to GitHub Pages workflow。发布成功后提交 GitHub 返回的 Pages 链接；不能把仓库地址或预期 URL 当成已部署网址。
 
 所有资源均使用相对路径，兼容 `/homework_2/` 子路径。
+
+## 本轮设计与框架
+
+先阅读 `docs/REDESIGN_DESIGN.md`，再阅读 `docs/REDESIGN_FRAMEWORK.md`。本次改版先形成设计思路与页面框架，然后实现朴素实用风格和新增交互。方案快照仅存在当前页面内，刷新会清空；参数输入为 0–100 的整数，失效输入明确停止当前模拟。

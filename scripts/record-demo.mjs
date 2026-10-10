@@ -7,15 +7,15 @@ let chromium;
 try { ({ chromium } = require('playwright')); }
 catch { ({ chromium } = require('C:/Users/22808/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright')); }
 const timeline = JSON.parse(readFileSync('delivery/timeline.json', 'utf8'));
-const framesDirectory = path.resolve('delivery/frames-final'); mkdirSync(framesDirectory, { recursive: true });
+const framesDirectory = path.resolve('delivery/frames-simple'); mkdirSync(framesDirectory, { recursive: true });
 const sourceManifest = Object.fromEntries(readdirSync('dist').map(file => [`dist/${file}`, createHash('sha256').update(readFileSync(`dist/${file}`)).digest('hex')]));
 const browser = await chromium.launch({ headless: true, executablePath: 'C:/Program Files/Google/Chrome/Application/chrome.exe' });
 const page = await browser.newPage({ viewport: { width: 1440, height: 1100 }, deviceScaleFactor: 1 });
 await page.goto('http://127.0.0.1:4173', { waitUntil: 'networkidle' });
 await page.evaluate(() => {
   const overlay = document.createElement('div'); overlay.id = 'video-caption';
-  overlay.style.cssText = 'position:fixed;bottom:0;left:196px;right:0;background:#0b101af5;border-top:1px solid #526b35;color:#eff4e7;z-index:100;padding:14px 30px 18px;min-height:104px;pointer-events:none;';
-  overlay.innerHTML = '<div id="video-title" style="color:#c4ef71;font-size:12px;margin-bottom:5px"></div><div id="video-subtitle" style="font-size:19px;line-height:1.65;max-width:1080px"></div>';
+  overlay.style.cssText = 'position:fixed;bottom:0;left:184px;right:0;background:#172b47f5;border-top:1px solid #a6c0ef;color:#fff;z-index:100;padding:14px 30px 18px;min-height:104px;pointer-events:none;';
+  overlay.innerHTML = '<div id="video-title" style="color:#c6dcff;font-size:13px;margin-bottom:5px"></div><div id="video-subtitle" style="font-size:19px;line-height:1.65;max-width:1080px"></div>';
   document.body.appendChild(overlay);
 });
 const cdp = await page.context().newCDPSession(page);
@@ -37,23 +37,30 @@ async function action(scene, fraction) {
     if (fraction === 0) await seek('trends');
     if (fraction === 1) await page.locator('[data-year="2023"]').click();
     if (fraction === 2) await page.locator('[data-year="2024"]').click();
-    if (fraction === 3) await page.locator('[data-year="2025"]').click();
+    if (fraction === 3) { await page.locator('[data-year="2025"]').click(); await page.locator('#rawData summary').click(); }
   } else if (scene === 'mechanism') {
     if (fraction === 0) { await seek('mechanism'); await page.locator('[data-factor="people"]').click(); }
     if (fraction > 0) await page.locator(`[data-factor="${['people', 'tools', 'data', 'system'][fraction]}"]`).click();
   } else if (scene === 'industries') {
     if (fraction === 0) { await seek('industries'); await page.locator('[data-industry="manufacturing"]').click(); }
-    if (fraction > 0) await page.locator(`[data-industry="${['manufacturing', 'service', 'science', 'agriculture'][fraction]}"]`).click();
+    if (fraction === 1) await page.locator('[data-step="3"]').click();
+    if (fraction === 2) await page.locator('[data-industry="service"]').click();
+    if (fraction === 3) await page.locator('[data-step="4"]').click();
   } else if (scene === 'lab') {
     if (fraction === 0) { await seek('lab'); await page.locator('#resetLab').click(); }
-    if (fraction === 1) await page.locator('#coverage').fill('30');
+    if (fraction === 1) await page.locator('#coverageNumber').fill('30');
     if (fraction === 2) await page.locator('#coverage').fill('90');
     if (fraction === 3) await page.locator('#resetLab').click();
+  } else if (scene === 'comparison') {
+    if (fraction === 0) { await page.locator('#savePlanA').click(); }
+    if (fraction === 1) { await page.locator('[data-preset="healthy"]').click(); await page.locator('#savePlanB').click(); }
+    if (fraction === 2) await page.locator('.plan-comparison').evaluate(el => el.scrollIntoView({ block: 'start', behavior: 'smooth' }));
+    if (fraction === 3) await page.locator('#exportComparison').click();
   } else if (scene === 'negative') {
-    if (fraction === 0) await page.locator('[data-preset="friction"]').click();
+    if (fraction === 0) { await seek('lab'); await page.locator('[data-preset="friction"]').click(); }
     if (fraction === 1) await page.locator('[data-preset="off"]').click();
-    if (fraction === 2) await page.locator('#resetLab').click();
-    if (fraction === 3) { await page.locator('.formula summary').click(); await seek('lab'); }
+    if (fraction === 2) await page.locator('#qualityNumber').fill('101');
+    if (fraction === 3) await page.locator('#resetLab').click();
   } else if (scene === 'balance') {
     if (fraction === 0) await seek('balance');
     if (fraction === 1) await page.locator('.governance-item').nth(1).click();
@@ -61,9 +68,9 @@ async function action(scene, fraction) {
     if (fraction === 3) await page.locator('.closing').scrollIntoViewIfNeeded();
   } else if (scene === 'sources') {
     if (fraction === 0) await page.locator('.source-open').first().click();
-    if (fraction === 1) await page.locator('#source-iea').evaluate(el => el.scrollIntoView({ block: 'center', behavior: 'smooth' }));
-    if (fraction === 2) { await page.locator('#closeSources').click(); await seek('overview'); }
-    if (fraction === 3) await page.locator('#tourStart').click();
+    if (fraction === 1) await page.locator('#sourceSearch').fill('IEA');
+    if (fraction === 2) await page.locator('#sourceSearch').fill('无匹配资料zz');
+    if (fraction === 3) { await page.locator('#clearSourceSearch').click(); await page.locator('#closeSources').click(); await seek('overview'); }
   }
 }
 await cdp.send('Page.startScreencast', { format: 'jpeg', quality: 85, maxWidth: 1440, maxHeight: 1100, everyNthFrame: 2 });
