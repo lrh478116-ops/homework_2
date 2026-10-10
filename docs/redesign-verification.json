@@ -1,12 +1,12 @@
 {
-  "runId": "79e6ed08-3e18-4f87-838e-5138772497e7",
-  "time": "2026-10-10T10:01:22.283Z",
+  "runId": "bfeb5550-82ad-4e78-a52c-ced1d8dd7e11",
+  "time": "2026-10-10T10:03:56.003Z",
   "url": "http://127.0.0.1:4173",
   "sourceManifest": {
-    "dist/app.js": "7789d64b56d01e51aeaa52f5e700a81235919771b4cb608af4e4db750b25edf9",
+    "dist/app.js": "1d82556abb27a111cfa5bd0033a1270c192036f33c9783f246848b5ba025d1fe",
     "dist/data.js": "6f98d801c73624cfc9dab031a9f55e04ae1b24d37909fe947af609e0cfc692a6",
     "dist/favicon.svg": "12e75256f5e7613ab361ac6358cab01651344ecf6c5254d348206b41d54544e1",
-    "dist/index.html": "920de2b42efa8799015f5a31d056eadc574973b10c58ddfd473cdba2f41d43eb",
+    "dist/index.html": "e642598683dd4ae7016175c95b581beee5fb2153e69b064699057c2b5bbfdca5",
     "dist/model.js": "17b70893aff0f09e5d7e7c590379c2135c078ca9baf2ac613f07987c2bd20895",
     "dist/styles.css": "ccd71180c2badfc162bf5a02cb014a707f1eccbe617664b2cb7bffa8908e13c7"
   },
@@ -22,7 +22,8 @@
     "来源搜索、数量、明确空结果与清除搜索一致",
     "原始记录表提供三年真实比例与来源",
     "浅色背景、可读字号、移除装饰动画",
-    "主要正文、来源说明和主要按钮文字对比度至少4.5:1"
+    "主要正文、来源说明和主要按钮文字对比度至少4.5:1",
+    "负向控制：损坏的旧裸路径模块不能替换内容版本中的新模型和数据"
   ],
   "errors": [],
   "result": "passed"

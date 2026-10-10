@@ -30,6 +30,8 @@ node scripts/serve.mjs
 
 ## 验证
 
+修改 dist 运行文件后，先执行 `node scripts/version-assets.mjs` 更新内容版本，再运行以下检查。内容版本不匹配时 check 会明确失败，避免旧缓存被当作当前版本。
+
 ```powershell
 node --test tests/model.test.mjs tests/compare.test.mjs
 node scripts/check.mjs

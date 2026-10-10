@@ -14,6 +14,8 @@ const url = process.env.TEST_BASE_URL || 'http://127.0.0.1:4173';
 const errors = []; const checks = [];
 page.on('pageerror', e => errors.push(e.message));
 await page.goto(url, { waitUntil: 'networkidle' });
+const appSource = readFileSync('dist/app.js', 'utf8');
+assert.ok(/model\.js\?v=[a-f0-9]+/.test(appSource), '新模块必须有内容版本，避免旧缓存绕过');
 assert.equal(await page.locator('#savePlanA').count(), 1, '新增实用交互必须在正式入口存在');
 
 async function numbers(params) {
@@ -107,6 +109,11 @@ const contrast = await page.evaluate(() => {
 });
 assert.ok(contrast.every(x => x.ratio >= 4.5), JSON.stringify(contrast));
 checks.push('主要正文、来源说明和主要按钮文字对比度至少4.5:1');
+await page.route('**/model.js', route => route.fulfill({ status: 200, contentType: 'text/javascript', body: 'export const staleModel = true;' }));
+await page.route('**/data.js', route => route.fulfill({ status: 200, contentType: 'text/javascript', body: 'export const staleData = true;' }));
+await page.reload({ waitUntil: 'networkidle' });
+assert.equal(await page.locator('#throughput').textContent(), `+${simulate(defaults).gain.toFixed(1)}%`);
+checks.push('负向控制：损坏的旧裸路径模块不能替换内容版本中的新模型和数据');
 assert.deepEqual(errors, []);
 const manifest = Object.fromEntries(readdirSync('dist').map(file => [`dist/${file}`, createHash('sha256').update(readFileSync(`dist/${file}`)).digest('hex')]));
 writeFileSync(process.env.REDESIGN_REPORT_FILE || 'docs/redesign-verification.json', JSON.stringify({ runId: randomUUID(), time: new Date().toISOString(), url, sourceManifest: manifest, checks, errors, result: 'passed' }, null, 2));

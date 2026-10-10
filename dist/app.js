@@ -1,5 +1,5 @@
-import { sources, adoption, investments, cases, caseSteps } from './data.js';
-import { simulate, defaults, toCSV, comparePlans, comparisonCSV } from './model.js';
+import { sources, adoption, investments, cases, caseSteps } from './data.js?v=6f98d801c736';
+import { simulate, defaults, toCSV, comparePlans, comparisonCSV } from './model.js?v=17b70893aff0';
 
 const $ = (s, base = document) => base.querySelector(s);
 const $$ = (s, base = document) => [...base.querySelectorAll(s)];

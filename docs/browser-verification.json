@@ -1,6 +1,6 @@
 {
-  "runId": "669773b7-5c35-40d6-9a53-34351854f987",
-  "time": "2026-10-10T10:01:18.912Z",
+  "runId": "72cef2ac-84e8-4440-9fe6-cac1734e9d51",
+  "time": "2026-10-10T10:04:00.621Z",
   "configuration": {
     "browser": "Chromium",
     "reducedMotion": "reduce",
@@ -14,10 +14,10 @@
     "url": "http://127.0.0.1:4173"
   },
   "sourceManifest": {
-    "dist/app.js": "7789d64b56d01e51aeaa52f5e700a81235919771b4cb608af4e4db750b25edf9",
+    "dist/app.js": "1d82556abb27a111cfa5bd0033a1270c192036f33c9783f246848b5ba025d1fe",
     "dist/data.js": "6f98d801c73624cfc9dab031a9f55e04ae1b24d37909fe947af609e0cfc692a6",
     "dist/favicon.svg": "12e75256f5e7613ab361ac6358cab01651344ecf6c5254d348206b41d54544e1",
-    "dist/index.html": "920de2b42efa8799015f5a31d056eadc574973b10c58ddfd473cdba2f41d43eb",
+    "dist/index.html": "e642598683dd4ae7016175c95b581beee5fb2153e69b064699057c2b5bbfdca5",
     "dist/model.js": "17b70893aff0f09e5d7e7c590379c2135c078ca9baf2ac613f07987c2bd20895",
     "dist/styles.css": "ccd71180c2badfc162bf5a02cb014a707f1eccbe617664b2cb7bffa8908e13c7"
   },
