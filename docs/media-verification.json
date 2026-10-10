@@ -1,10 +1,10 @@
 {
   "video": {
-    "durationSeconds": 247.74,
+    "durationSeconds": 250.03,
     "videoCodec": "h264",
     "audioCodec": "aac",
     "resolution": "1440x1100",
-    "decodedAudioRMS": 1996.13,
+    "decodedAudioRMS": 1958.16,
     "voice": "Microsoft Huihui Desktop Chinese synthesized narration",
     "capture": "actual local website Chrome CDP frames"
   },
