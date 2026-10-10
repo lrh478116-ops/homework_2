@@ -1,0 +1,13 @@
+{
+  "name": "ai-productivity-atlas",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "智变：人工智能与新质生产力交互可视化网站",
+  "scripts": {
+    "start": "node scripts/serve.mjs",
+    "test": "node --test tests/model.test.mjs",
+    "check": "node scripts/check.mjs",
+    "test:browser": "node tests/browser.mjs"
+  }
+}

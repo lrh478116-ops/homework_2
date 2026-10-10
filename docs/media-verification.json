@@ -1,0 +1,16 @@
+{
+  "video": {
+    "durationSeconds": 247.73,
+    "videoCodec": "h264",
+    "audioCodec": "aac",
+    "resolution": "1440x1000",
+    "decodedAudioRMS": 1996.32,
+    "voice": "Microsoft Huihui Desktop Chinese synthesized narration",
+    "capture": "actual local website Chrome CDP frames"
+  },
+  "pdf": {
+    "pages": 3,
+    "textExtractedOnEveryPage": true,
+    "renderedReview": "docs/pdf-review/page-1.png through page-3.png"
+  }
+}

@@ -1,0 +1,8 @@
+.openai/
+node_modules/
+docs/screenshots/browser-*.csv
+docs/pdf-review/
+docs/video-review/
+delivery/
+*.tar.gz
+*.zip
