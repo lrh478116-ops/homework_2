@@ -68,10 +68,18 @@ for (const width of [1440, 1024, 768, 390, 320]) {
 }
 checks.push('保存两方案后五断点布局无整页溢出，表格在容器内滚动');
 await page.setViewportSize({ width: 1440, height: 1000 });
+await page.reload({ waitUntil: 'networkidle' });
+assert.equal(await page.locator('#planAResult').textContent(), '未保存');
+assert.equal(await page.locator('#planBResult').textContent(), '未保存');
+assert.ok(await page.locator('#exportComparison').isDisabled());
+await page.locator('#savePlanA').click();
+await page.locator('[data-preset="healthy"]').click();
+await page.locator('#savePlanB').click();
+assert.equal(await page.locator('.comparison-table tbody tr').count(), 6);
 await page.locator('#clearPlans').click();
 assert.ok(await page.locator('#exportComparison').isDisabled());
 assert.equal(await page.locator('.comparison-table tbody tr').count(), 0);
-checks.push('清空方案不保留旧对比或可导出状态');
+checks.push('刷新与清空均不保留旧方案或可导出状态');
 await page.locator('[data-industry="manufacturing"]').click(); await page.locator('[data-step="3"]').click();
 assert.ok((await page.locator('#stepTitle').textContent()).includes('工单执行'));
 await page.locator('[data-industry="service"]').click();
